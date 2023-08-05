@@ -59,11 +59,15 @@ export const AppReducer = (state, action) => {
             };
         case 'SET_BUDGET':
             action.type = "DONE";
-            state.budget = action.payload;
+            budget = budget.state
+                if(budget > 20000) {
+                    alert("Cannot exceed 20'000");
+                };
+                return {
+                    ...state,
+                     budget
+                };
 
-            return {
-                ...state,
-            };
         case 'CHG_CURRENCY':
             action.type = "DONE";
             state.currency = action.payload;
@@ -73,7 +77,7 @@ export const AppReducer = (state, action) => {
 
         default:
             return state;
-    }
+        }
 };
 
 // 1. Sets the initial state when the app loads
